@@ -1,17 +1,23 @@
-#ifndef MAIN_C
-#define MAIN_C
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+int pf_char(va_list list);
+int pf_string(va_list list);
+int pf_percent(va_list list);
+int pf_unsigned_int(va_list list);
+int pf_signed_int(va_list list);
 
 typedef struct ch
 {
 	char *ch;
-	char (*type)(char *);
+	int (*type)(va_list);
 } ch_con;
 
 #endif

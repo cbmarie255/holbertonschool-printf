@@ -5,7 +5,7 @@
  *@list: to iterate through arguments
  *Return: character to output
  */
-char pf_char(va_list list)
+int pf_char(va_list list)
 {
 	_putchar(va_arg(list, int));
 }
@@ -15,7 +15,7 @@ char pf_char(va_list list)
  *@list: to iterate through arguments
  *Return: string to output
  */
-char pf_string(va_list list)
+int pf_string(va_list list)
 {
 	char *string;
 	int i;
@@ -28,15 +28,17 @@ char pf_string(va_list list)
 		_putchar(string[i]);
 	}
 }
+
 /**
  *pf_percent - will print a percent symbol to output
  *@list: to iterate through arguments
  *Return: percent sign to output
  */
-char pf_percent(__attribute__((unused))va_list list)
+int pf_percent(__attribute__((unused))va_list list)
 {
 	_putchar('%');
 }
+
 /**
  *pf_unsigned_int - will print an unsigned integer to output
  *@list: to iterate through arguments
@@ -46,6 +48,7 @@ int pf_unsigned_int(va_list list)
 {
 	return;
 }
+
 /**
  *pf_signed_int - will print a signed integer to output
  *@list: to iterate through arguments
