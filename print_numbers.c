@@ -12,7 +12,7 @@ void print_numbers(int number)
 	char c;
 
 	if (number == 0)
-		return;
+		_putchar('0');
 	while (temp_num > 0)
 	{
 		temp_num = (temp_num / 10);
