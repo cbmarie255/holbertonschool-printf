@@ -8,4 +8,10 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 
+typedef struct ch
+{
+	char *ch;
+	char (*type)(char *);
+} ch_con;
+
 #endif
