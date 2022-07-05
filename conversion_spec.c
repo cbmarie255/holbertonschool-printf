@@ -9,7 +9,7 @@ int pf_char(va_list list)
 {
 	int count = 0;
 
-	_putchar(va_arg(list, int));
+	_putchar((char)va_arg(list, int));
 	count++;
 	return (count);
 }
@@ -27,7 +27,7 @@ int pf_string(va_list list)
 
 	string = va_arg(list, char *);
 	if (string == NULL)
-		return (0);
+		string = "(null)";
 	for (i = 0; string[i] != '\0'; i++)
 	{
 		_putchar(string[i]);
@@ -61,7 +61,18 @@ int pf_int(va_list list)
 	int i = 1;
 	int n = va_arg(list, int);
 	int count = 0;
+	int j;
+	char intmin[11] = {"-2147483648"};
 
+	if (n == INT_MIN)
+	{
+		for (j = 0; j <= 10; j++)
+		{
+			_putchar(intmin[j]);
+			count++;
+		}
+		return (count);
+	}
 	if (n < 0)
 	{
 		_putchar('-');

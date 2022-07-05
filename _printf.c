@@ -28,10 +28,9 @@ int _printf(const char *format, ...)
 					count++;
 				}
 			i = i + 2;
-		}
-		if (format[i] == '%' && format[i + 1] == '\0')
-		{	_putchar('%');
+			_putchar(format[i]);
 			count++;
+			continue;
 		}
 		_putchar(format[i]);
 		count++;
