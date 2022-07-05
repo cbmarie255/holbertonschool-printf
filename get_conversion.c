@@ -23,5 +23,5 @@ int (*get_conversion(char check))(va_list)
 		if (check == op[i].ch[0])
 			return (op[i].type);
 	}
-	return (NULL);
+	return (0);
 }

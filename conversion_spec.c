@@ -50,21 +50,26 @@ int pf_percent(__attribute__((unused))va_list list)
  */
 int pf_int(va_list list)
 {
-	int i = list;
+	int i = 1;
+	int n = va_arg(list, int);
+	int count = 0;
 
-	if (list == 0)
+	if (n < 0)
 	{
-		_putchar('0');
+		putchar('-');
+		n = -n;
+		count++;
 	}
-	if (list < 0)
+	while ((n / i) >= 10)
+		{
+			i *= 10;
+		}
+	while (i >= 1)
 	{
-		_putchar('-');
-		list = -list;
+		_putchar((n / i) + '0');
+		n %= i;
+		i /= 10;
+		count++;
 	}
-	if (list > 0)
-	{
-		pf_int(list/10);
-		_putchar('0' + (i%10));
-	}
-	return (1);
+	return (count);
 }

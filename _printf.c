@@ -10,24 +10,23 @@ int _printf(const char *format, ...)
 	int (*type)(va_list);
 	va_list list;
 	int i;
-	unsigned int convert;
+	unsigned int convert = 0;
 
 	va_start(list, format);
 	if (format == NULL || list == NULL)
 		return (0);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%' && format[i + 2] == ' ')
+		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
 				if (type != NULL)
-					convert = convert + (type(list));
+					convert = convert + (type(list));	
 				else
 					convert = _putchar(format[i] + _putchar(format[i + 1]));
 			i = i + 2;
 		}
-		else
-			_putchar(format[i]);
+		_putchar(format[i]);
 	}
 	va_end(list);
 	return (1);
