@@ -64,7 +64,7 @@ int pf_int(va_list list)
 
 	if (n < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		count++;
 		n = n * (-1);
 	}
