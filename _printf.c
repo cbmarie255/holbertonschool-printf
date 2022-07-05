@@ -23,23 +23,23 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
+		if (!format[i])
+                        return (count);
 		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
-				if (type != NULL)
-					count = count + (type(list));
-				else
-				{
-					_putchar(format[i + 1]);
-					count++;
-				}
-			i = i + 2;
-			_putchar(format[i]);
+			if (type != NULL)
+			{
+				count = count + (type(list));
+				i += 1;
+				continue;
+			}
+			if (!format[i + 1])
+				return (-1);
+			_putchar(format[i + 1]);
 			count++;
-			continue;
+			i = i + 2;
 		}
-		if (!format[i])
-			return (count);
 	}
 	va_end(list);
 	return (count);
