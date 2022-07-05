@@ -65,8 +65,8 @@ int pf_int(va_list list)
 	if (n < 0)
 	{
 		putchar('-');
-		n = -n;
 		count++;
+		n = n * (-1);
 	}
 	while ((n / i) >= 10)
 		{
