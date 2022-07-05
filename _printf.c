@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 			count++;
 		}
 		if (!format[i])
-                        return (count);
+			return (count);
 		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
@@ -35,10 +35,13 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			if (!format[i + 1])
-				return (-1);
+			{
+				count++;
+				break;
+			}
 			_putchar(format[i + 1]);
 			count++;
-			i = i + 2;
+			i += 2;
 		}
 	}
 	va_end(list);

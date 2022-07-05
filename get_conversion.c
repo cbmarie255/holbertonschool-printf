@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- *get_conversion - function pointer that will perform the respective specifier's function
+ *get_conversion - function pointer that will perform
+ *the respective specifier's task
  *@check: checks to see if conversion exists
  *Return: True or NULL
  */
@@ -16,6 +17,7 @@ int (*get_conversion(char check))(va_list)
 		{NULL, NULL}
 	};
 	int i;
+
 	for (i = 0; op[i].ch != NULL; i++)
 	{
 		if (op[i].ch == NULL)

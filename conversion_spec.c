@@ -80,9 +80,9 @@ int pf_int(va_list list)
 		n = n * (-1);
 	}
 	while ((n / i) >= 10)
-		{
-			i *= 10;
-		}
+	{
+		i *= 10;
+	}
 	while (i >= 1)
 	{
 		_putchar((n / i) + '0');
