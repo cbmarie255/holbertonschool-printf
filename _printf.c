@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 	va_list list;
 	int i;
 	unsigned int convert = 0;
+	int count = 0;
 
 	va_start(list, format);
 	if (format == NULL || list == NULL)
@@ -23,11 +24,15 @@ int _printf(const char *format, ...)
 				if (type != NULL)
 					convert = convert + (type(list));	
 				else
+				{
 					convert = _putchar(format[i] + _putchar(format[i + 1]));
+					count++;
+				}
 			i = i + 2;
 		}
 		_putchar(format[i]);
+		count++;
 	}
 	va_end(list);
-	return (1);
+	return (count);
 }
