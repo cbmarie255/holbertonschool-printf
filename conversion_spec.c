@@ -7,8 +7,11 @@
  */
 int pf_char(va_list list)
 {
+	int count = 0;
+
 	_putchar(va_arg(list, int));
-	return (1);
+	count++;
+	return (count);
 }
 
 /**
@@ -20,6 +23,7 @@ int pf_string(va_list list)
 {
 	char *string;
 	int i;
+	int count = 0;
 
 	string = va_arg(list, char *);
 	if (string == NULL)
@@ -27,8 +31,9 @@ int pf_string(va_list list)
 	for (i = 0; string[i] != '\0'; i++)
 	{
 		_putchar(string[i]);
+		count++;
 	}
-	return (1);
+	return (count);
 }
 
 /**
@@ -38,8 +43,11 @@ int pf_string(va_list list)
  */
 int pf_percent(__attribute__((unused))va_list list)
 {
+	int count = 0;
+
 	_putchar('%');
-	return (1);
+	count++;
+	return (count);
 
 }
 
