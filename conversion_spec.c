@@ -8,6 +8,7 @@
 int pf_char(va_list list)
 {
 	_putchar(va_arg(list, int));
+	return (1);
 }
 
 /**
@@ -22,11 +23,12 @@ int pf_string(va_list list)
 
 	string = va_arg(list, char *);
 	if (string == NULL)
-		return;
+		return (0);
 	for (i = 0; string[i] != '\0'; i++)
 	{
 		_putchar(string[i]);
 	}
+	return (1);
 }
 
 /**
@@ -37,24 +39,32 @@ int pf_string(va_list list)
 int pf_percent(__attribute__((unused))va_list list)
 {
 	_putchar('%');
+	return (1);
+
 }
 
 /**
- *pf_unsigned_int - will print an unsigned integer to output
+ *pf_int - will print an int to output
  *@list: to iterate through arguments
- *Return: unsigned int to output
+ *Return: int to output
  */
-int pf_unsigned_int(va_list list)
+int pf_int(va_list list)
 {
-	return;
-}
+	int i = list;
 
-/**
- *pf_signed_int - will print a signed integer to output
- *@list: to iterate through arguments
- *Return: signed int to output
- */
-int pf_signed_int(va_list list)
-{
-	return;
+	if (list == 0)
+	{
+		_putchar('0');
+	}
+	if (list < 0)
+	{
+		_putchar('-');
+		list = -list;
+	}
+	if (list > 0)
+	{
+		pf_int(list/10);
+		_putchar('0' + (i%10));
+	}
+	return (1);
 }
