@@ -12,11 +12,17 @@ int _printf(const char *format, ...)
 	int i;
 	int count = 0;
 
-	va_start(list, format);
 	if (format == NULL)
 		return (-1);
+
+	va_start(list, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
+		if (format[i] != '%' && format[i])
+		{
+			_putchar(format[i]);
+			count++;
+		}
 		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
@@ -32,8 +38,8 @@ int _printf(const char *format, ...)
 			count++;
 			continue;
 		}
-		_putchar(format[i]);
-		count++;
+		if (!format[i])
+			return (count);
 	}
 	va_end(list);
 	return (count);
