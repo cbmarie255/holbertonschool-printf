@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				i += 1;
 				continue;
 			}
-			if ((type == NULL) && format[i + 1])
+			if (!type)
 			{
 				_putchar(format[i]), _putchar(format[i + 1]);
 				count += 2, i += 2;
