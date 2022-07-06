@@ -9,19 +9,16 @@ int _printf(const char *format, ...)
 {
 	int (*type)(va_list);
 	va_list list;
-	int i;
-	int count = 0;
+	int i, count = 0;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(list, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%' && format[i])
 		{
-			_putchar(format[i]);
-			count++;
+			_putchar(format[i]), count++;
 		}
 		if (!format[i])
 			return (count);
@@ -34,11 +31,15 @@ int _printf(const char *format, ...)
 				i += 1;
 				continue;
 			}
+			if ((type == NULL) && format[i + 1])
+			{
+				_putchar(format[i]), _putchar(format[i + 1]);
+				count += 2, i += 2;
+				continue;
+			}
 			if (!format[i + 1])
 				return (-1);
-			_putchar(format[i + 1]);
-			count++;
-			i += 2;
+			_putchar(format[i + 1]), count++, i += 2;
 		}
 	}
 	va_end(list);
