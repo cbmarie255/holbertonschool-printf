@@ -18,18 +18,29 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%' && format[i])
 		{
-			_putchar(format[i]), count++;
+			_putchar(format[i]);
+			count++;
 		}
-		if (!format[i])
-			return (count);
 		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
+				if (type != NULL)
+					count = count + (type(list));
+				else
+				{
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					count++;
+				}
+			i++;
+		}
+		if (!format[i])
+			return (count);
+		{
 			if (!format[i + 1])
 				return (-1);
 			_putchar(format[i + 1]), count++, i += 2;
 		}
-	}
 	va_end(list);
 	return (count);
-}
+	}
