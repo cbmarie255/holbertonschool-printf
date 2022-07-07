@@ -25,18 +25,6 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			type = get_conversion(format[i + 1]);
-			if (type != NULL)
-			{
-				count = count + (type(list));
-				i += 1;
-				continue;
-			}
-			if (type == NULL && (format[i + 1]))
-			{
-				_putchar(format[i]), _putchar(format[i + 1]);
-				count += 2, i += 2;
-				continue;
-			}
 			if (!format[i + 1])
 				return (-1);
 			_putchar(format[i + 1]), count++, i += 2;
