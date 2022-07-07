@@ -9,10 +9,12 @@ int _printf(const char *format, ...)
 {
 	int (*type)(va_list);
 	va_list list;
-	int i, count = 0;
+	int i;
+	int count = 0;
 
 	if (format == NULL)
 		return (-1);
+
 	va_start(list, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -36,11 +38,7 @@ int _printf(const char *format, ...)
 		}
 		if (!format[i])
 			return (count);
-		{
-			if (!format[i + 1])
-				return (-1);
-			_putchar(format[i + 1]), count++, i += 2;
-		}
+	}
 	va_end(list);
 	return (count);
-	}
+}
