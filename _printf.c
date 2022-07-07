@@ -30,13 +30,11 @@ int _printf(const char *format, ...)
 					count = count + (type(list));
 				else
 				{
+					_putchar(format[i]);
 					_putchar(format[i + 1]);
 					count++;
 				}
-			i = i + 2;
-			_putchar(format[i]);
-			count++;
-			continue;
+			i++;
 		}
 		if (!format[i])
 			return (count);
